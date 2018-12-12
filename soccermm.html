@@ -1,0 +1,183 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- Page Content  -->
+
+<main role="main">
+
+<section class="jumbotron text-center" style="height:300px;">
+<div class="container">
+<h1 class="jumbotron-heading">Join a Game</h1>
+<p class="lead text-muted">Games will be hosted by users and staff</p>
+<p class="lead text-muted">Price of joining a game is calculated with maximum amount of player divide by the booking price</p>
+<p class="lead text-muted">1. Join a game  2. Be there  3. Have FUN!</p>
+<p>
+</p>
+</div>
+</section>
+<div class='filter' style="margin-left:7%;">
+<h2>Filter</h2>
+<label for="exampleFormControlSelect1">Day: </label>
+<select style='width:10%; display:inline;' class="form-control" id="exampleFormControlSelect1">
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thrusday</option>
+<option>Friday</option>
+<option>Saturday</option>
+<option>Sunday</option>
+</select>
+<span>&nbsp; </span>
+<label for="exampleFormControlSelect1">Player Size:</label>
+<select style='width:10%; display:inline;' class="form-control" id="exampleFormControlSelect1">
+<option>8</option>
+<option>16</option>
+<option>24</option>
+</select>
+<span>&nbsp; </span>
+<label for="exampleFormControlSelect1">Entry Fee:</label>
+<select style='width:15%; display:inline;' class="form-control" id="exampleFormControlSelect1">
+<option>Free</option>
+<option>Less than $10</option>
+<option>$10++</option>
+<option>$20++</option>
+</select>
+<span>&nbsp; </span>
+<label for="exampleFormControlSelect1">Age:</label>
+<input type="text" class="form-control" id="exampleFormControlInput1 "  style='width:5%; display:inline;' placeholder="0">
+<span>&nbsp; </span>
+<label for="exampleFormControlSelect1">Gender:</label>
+<select style='width:15%; display:inline;' class="form-control" id="exampleFormControlSelect1">
+<option>Mixed</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+<div class="album py-5 bg-light">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+  <div class="card mb-4 shadow-sm">
+    <img class="card-img-top" src="https://www.safra.sg/~/media/Images/Enjoy/Sports-Outdoor/soccer_pitches.ashx" height="260px"alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">West Coast Pitch</p>
+      <p class="card-text">Players - 14/24 Hoster: Bewn</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View details</button>
+        </div>
+        Sat/15Dec
+        <small class="text-muted"><span style= "color:red;">$6.50/Player</span></small>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="card mb-4 shadow-sm">
+    <img class="card-img-top" src="https://www.myactivesg.com/~/media/Consumer/Images/Facilities/DUS%20and%20FTP/Ang%20Mo%20Kio%20Secondary%20School/AMKSSField.jpg" height="260px"alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">Ang Mo Kio Secondary School</p>
+      <p class="card-text">Players - 14/24 Hoster: james</p>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View details</button>
+        </div>
+        Sun/16Dec
+        <small class="text-muted"><span style= "color:green;">Free</span></small>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="card mb-4 shadow-sm">
+    <img class="card-img-top" src="https://www.myactivesg.com/~/media/Consumer/Images/Facilities/DUS%20and%20FTP/Bartley%20Secondary%20School/Bartley%20Secondary%20School%20Field%201.jpg" height="260px"alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">Bartley Secondary School Field</p>
+      <p class="card-text">Players - 23/24 Hoster: Will99</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View details</button>
+        </div>
+        Mon/17Dec
+        <small class="text-muted"><span style= "color:green;">Free</span></small>
+      </div>
+    </div>
+  </div>
+</div>
+{% for i in range(0,list|length) %}
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <img class="card-img-top" src="{{list[i].get_fieldimg()}}"height="260px" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">{{list[i].get_field()}}</p>
+        <p class="card-text">Players - 0/{{list[i].get_playersize()}} Hoster: Will99</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='/soccerdetail={{i}}'" >View details</button>
+          </div>
+          Mon/{{list[i].get_date()}}
+          <small class="text-muted"><span style= "color:green;">{{list[i].get_price()}}</span></small>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+</div>
+
+</main>
+
+<footer class="text-muted">
+<div class="container">
+<p class="float-right">
+<a href="#">Back to top</a>
+</p>
+</div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="../../assets/js/vendor/holder.min.js"></script>
+
+
+</div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#sidebar").mCustomScrollbar({
+      theme: "minimal"
+  });
+
+  $('#dismiss, .overlay').on('click', function () {
+      $('#sidebar').removeClass('active');
+      $('.overlay').removeClass('active');
+  });
+
+  $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').addClass('active');
+      $('.overlay').addClass('active');
+      $('.collapse.in').toggleClass('in');
+      $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+  });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- Page Content  -->
+    <div class="container1">
+      <img id="field" src="{{list[id].get_fieldimg()}}" alt="Snow" >
+      <div class="centered">{{list[id].get_field()}}</div>
+    </div>
+    <div class="container2">
+      <div class="box1">
+          <p class="inner1"><img src="{{ url_for('static', filename='image/date.png') }}"> :Sat/{{list[id].get_date()}} <br><img src="{{ url_for('static', filename='image/time.png') }}"> :<span id='time'>{{list[id].get_time1()}}-{{list[id].get_time2()}}</span></p>
+          <p class="inner2"><img src="{{ url_for('static', filename='image/gender.png') }}">:{{list[id].get_gender()}} <br><img src="{{ url_for('static', filename='image/age.png') }}">:{{list[id].get_age1()}}-{{list[id].get_age2()}}</p>
+          <h1>Entry Fee:{{list[id].get_price()}}</h1>
+          <p class="book">Booking status:not confirmed</p>
+          <p>Game Description</p>
+          <textarea readonly>
+{{list[id].get_description()}}
+          </textarea>
+          <p>Location</p>
+          <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="400" id="gmap_canvas" src="{{list[id].get_location()}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de/webdesign-goettingen/">pure black gmbh</a></div><style>.mapouter{text-align:right;height:400px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:600px;}</style></div>
+          </div>
+      <div class="box2">
+        <br>
+        <button type="button" class="btn btn-lg btn-outline-secondary" onclick="" >Join Match</button>
+        <br><br><br>
+        <p>Host</p>
+        <hr>
+          <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+            Bewn
+        </p>
+        <div class="player">
+          <hr>
+          <h4>Player 6/24</h4>
+          <hr>
+            <div class="players">
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              Bewn
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              player1
+
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              player2
+              </p>
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              player3
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              player4
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              player5
+            <p><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2acbgBs6BXOZoHIBDk_z2vaqyodiOiMhM94l9K1Si06HAUFJ7" alt="Avatar">
+              player6
+            </p>
+            </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+    });
+
+    $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+    });
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+});
+</script>
+{% endblock %}
